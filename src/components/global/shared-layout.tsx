@@ -5,7 +5,7 @@ import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
 import { Container } from "./container";
 import { MobileMenu } from "./mobile-menu";
 import { ContainerProps } from "@/utils/interfaces/container.interface";
-import global from "@/styles/global.module.scss";
+import styles from "@/styles/modules/global/shared-layout.module.scss";
 
 export const SharedLayout: FC<ContainerProps> = ({
   children,
@@ -19,10 +19,10 @@ export const SharedLayout: FC<ContainerProps> = ({
   return (
     <>
       <Container>
-        <header className={global.header}>
+        <header className={styles.header}>
           <Link href="/">
             <Image
-              className={global.logo}
+              className={styles.logo}
               src="/Logo.svg"
               alt="Logo"
               width={144}
@@ -32,18 +32,18 @@ export const SharedLayout: FC<ContainerProps> = ({
           {isMenuOpen ? (
             <button
               type="button"
-              className={global.burger}
+              className={styles.burger}
               onClick={toggleMenu}
             >
-              <RxCross1 className={global.burgerIconClose} />
+              <RxCross1 className={styles.burgerIconClose} />
             </button>
           ) : (
             <button
               type="button"
-              className={global.burger}
+              className={styles.burger}
               onClick={toggleMenu}
             >
-              <RxHamburgerMenu className={global.burgerIconOpen} />
+              <RxHamburgerMenu className={styles.burgerIconOpen} />
             </button>
           )}
         </header>

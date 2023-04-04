@@ -1,38 +1,16 @@
-.container {
-  max-width: 360px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.header {
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.logo {
-  width: 144px;
-  height: 30px;
-}
-
-.burger {
-  background: transparent;
-
-  &IconOpen {
-    width: 30px;
-    height: 30px;
-  }
-
-  &IconClose {
-    width: 30px;
-    height: 30px;
-  }
-}
+@import "./utils/vars";
+@import "./utils/mixins";
 
 .section {
   padding-top: 80px;
+
+  @include tablet {
+    padding-top: 40px;
+  }
+
+  &.hero {
+    padding-top: 40px;
+  }
 
   &.highScore {
     padding-bottom: 80px;
@@ -51,211 +29,24 @@
 
 .subHeader {
   font-size: 1.25rem;
-  color: var(--header-color);
+  color: $header-color;
+
+  @include tablet {
+    font-size: 2rem;
+  }
 }
 
 .viewMore {
   font-size: 0.875rem;
-}
 
-.cardLink {
-  display: block;
-  &:not(:first-of-type) {
-    margin-top: 10px;
+  transition: $transition;
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
   }
-  &:hover .quizCard,
-  &:hover .userCard {
-    box-shadow: var(--card-shadow-hover);
-  }
-}
 
-.quizCard {
-  height: 75px;
-
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-
-  background: var(--alt-bg-color);
-
-  box-shadow: var(--card-shadow);
-  border-radius: var(--border-radius);
-
-  transition: box-shadow var(--transition);
-
-  &Name {
+  @include tablet {
     font-size: 1rem;
-    font-weight: inherit;
-    color: var(--header-color);
   }
-
-  &Number {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 15px;
-    font-size: 0.875rem;
-  }
-
-  &Icon {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-.userCard {
-  min-height: 100px;
-
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-
-  background: var(--alt-bg-color);
-
-  box-shadow: var(--card-shadow);
-  border-radius: var(--border-radius);
-
-  transition: box-shadow var(--transition);
-}
-
-.userInfoWrapper {
-  display: flex;
-  align-items: center;
-}
-
-.userAvatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-}
-
-.userName {
-  margin-left: 4px;
-}
-
-.userStats {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  margin-top: 12px;
-
-  &Item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &Icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  &Name {
-    @media (max-width: 767.98px) {
-      display: none;
-    }
-
-    &Mobile {
-      margin-left: 10px;
-
-      @media (min-width: 768px) {
-        display: none;
-      }
-    }
-  }
-}
-
-.backdrop {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-
-  width: 100vw;
-  height: 100vh;
-
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.menu {
-  &List {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &Icon {
-    margin-right: 10px;
-    width: 23px;
-    height: 23px;
-  }
-
-  &Item {
-    display: flex;
-    align-items: center;
-
-    height: 30px;
-    margin-top: 15px;
-
-    font-size: 1.25rem;
-  }
-
-  &UserWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &UserCard {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &UserInfo {
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
-  }
-
-  &UserAvatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-  }
-
-  &UserName {
-    font-size: 1.25rem;
-    overflow-wrap: anywhere;
-  }
-
-  &UserEmail {
-    color: var(--backdrop-color);
-    overflow-wrap: anywhere;
-  }
-}
-
-.logOutBtn {
-  display: flex;
-  align-items: center;
-  justify-content: baseline;
-
-  height: 30px;
-  margin-top: 15px;
-
-  font-size: 1.25rem;
-
-  background-color: transparent;
-  color: inherit;
-}
-
-.logOutIcon {
-  width: 23px;
-  height: 28px;
-  margin-right: 10px;
 }

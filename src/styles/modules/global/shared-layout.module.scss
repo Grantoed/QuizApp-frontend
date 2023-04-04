@@ -1,0 +1,41 @@
+@import "../../utils/vars";
+@import "../../utils/mixins";
+
+.header {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  @include tablet {
+    padding-top: 40px;
+  }
+}
+
+.logo {
+  width: 144px;
+  height: 30px;
+}
+
+.burger {
+  background: transparent;
+  color: inherit;
+
+  transition: $transition;
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+  }
+
+  &IconOpen {
+    width: 30px;
+    height: 30px;
+    color: inherit;
+  }
+
+  &IconClose {
+    width: 30px;
+    height: 30px;
+    color: inherit;
+  }
+}

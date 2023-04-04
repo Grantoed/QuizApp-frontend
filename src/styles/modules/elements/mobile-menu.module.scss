@@ -1,0 +1,142 @@
+@import "../../utils/vars";
+@import "../../utils/mixins";
+
+.backdrop {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  width: 100vw;
+  height: 100vh;
+
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @include tablet {
+    justify-content: space-between;
+    max-height: 400px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+.menu {
+  &List {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include tablet {
+      align-items: flex-start;
+    }
+  }
+
+  &Icon {
+    margin-right: 10px;
+    width: 23px;
+    height: 23px;
+  }
+
+  &Item {
+    display: flex;
+    align-items: center;
+
+    height: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 30px;
+
+    font-size: 1.25rem;
+
+    @include tablet {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+
+  &Link {
+    display: flex;
+    align-items: center;
+    transition: $transition;
+
+    &:hover,
+    &:focus {
+      color: $link-hover-color;
+    }
+  }
+
+  &UserWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include tablet {
+      flex-direction: row-reverse;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+  }
+
+  &UserCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &UserInfo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+  }
+
+  &UserAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  &UserName {
+    font-size: 1.25rem;
+    overflow-wrap: anywhere;
+  }
+
+  &UserEmail {
+    color: $backdrop-color;
+    overflow-wrap: anywhere;
+  }
+}
+
+.logOutBtn {
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+
+  font-size: 1.25rem;
+
+  background-color: transparent;
+  color: inherit;
+
+  transition: $transition;
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+  }
+
+  @include mobile-only {
+    height: 30px;
+    margin-top: 30px;
+  }
+}
+
+.logOutIcon {
+  width: 23px;
+  height: 28px;
+  margin-right: 10px;
+
+  color: inherit;
+}

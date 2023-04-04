@@ -1,0 +1,104 @@
+@import "../../utils/vars";
+@import "../../utils/mixins";
+
+.cardLink {
+  display: block;
+  &:not(:first-of-type) {
+    margin-top: 10px;
+  }
+  &:hover .userCard,
+  &:focus .userCard {
+    box-shadow: $card-shadow-hover;
+  }
+}
+
+.userCard {
+  min-height: 100px;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  background: $alt-bg-color;
+
+  box-shadow: $card-shadow;
+  border-radius: $border-radius;
+
+  transition: box-shadow $transition;
+
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.userInfoWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.userAvatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+
+  @include tablet {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.userName {
+  margin-left: 4px;
+
+  @include tablet {
+    font-size: 1.25rem;
+  }
+}
+
+.userStats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include mobile-only {
+    margin-top: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  @include tablet {
+    width: 50%;
+  }
+
+  &Item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &Icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &Name {
+    display: none;
+
+    @include desktop {
+      display: block;
+    }
+
+    &Mobile {
+      margin-left: 10px;
+      font-size: 1rem;
+
+      @include desktop {
+        display: none;
+        font-size: 1.25rem;
+      }
+    }
+  }
+}
