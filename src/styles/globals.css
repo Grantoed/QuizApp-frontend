@@ -16,10 +16,6 @@
   --transition: 250ms ease-in;
 }
 
-html {
-  zoom: 0.8;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
