@@ -9,6 +9,10 @@
     @include tablet {
       margin-top: 20px;
     }
+
+    @include desktop {
+      margin-top: unset;
+    }
   }
   &:hover .quizCard,
   &:focus .quizCard {

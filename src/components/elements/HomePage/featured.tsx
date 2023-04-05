@@ -14,7 +14,7 @@ export const Featured: FC = (): ReactElement => {
             View more
           </Link>
         </div>
-        <div className={global.cardWrapper}>
+        <div className={global.quizCardWrapper}>
           <QuizCard
             title={"Prepare for your next History exam"}
             questionsNumber={31}

@@ -75,30 +75,38 @@
 
   &Item {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
   }
 
   &Icon {
     width: 24px;
     height: 24px;
+
+    @include desktop {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   &Name {
-    display: none;
+    margin-left: 5px;
+    @include desktop {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &Number {
+    @include desktop {
+      font-size: 1.25rem;
+    }
+  }
 
+  &Text {
+    display: none;
     @include desktop {
       display: block;
-    }
-
-    &Mobile {
-      margin-left: 10px;
-      font-size: 1rem;
-
-      @include desktop {
-        display: none;
-        font-size: 1.25rem;
-      }
     }
   }
 }

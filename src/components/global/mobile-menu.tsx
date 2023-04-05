@@ -8,7 +8,7 @@ import {
   BiInfoCircle,
   BiLogOut,
 } from "react-icons/bi";
-import styles from "@/styles/modules/elements/mobile-menu.module.scss";
+import styles from "@/styles/modules/global/mobile-menu.module.scss";
 
 export const MobileMenu: FC = (): ReactElement => {
   return (

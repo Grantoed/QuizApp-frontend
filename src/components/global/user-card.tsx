@@ -33,9 +33,9 @@ export const UserCard: FC<UserCardInterface> = ({
               height={40}
             ></Image>
             <p className={styles.userStatsName}>
-              {quizzesSolved} Quizzes solved
+              <span className={styles.userStatsNumber}>{quizzesSolved}</span>
+              <span className={styles.userStatsText}>Quizzes solved</span>
             </p>
-            <p className={styles.userStatsNameMobile}>{quizzesSolved}</p>
           </div>
           <div className={styles.userStatsItem}>
             <Image
@@ -45,8 +45,10 @@ export const UserCard: FC<UserCardInterface> = ({
               width={40}
               height={40}
             ></Image>
-            <p className={styles.userStatsName}>{quizzesWon} Quizzes won</p>
-            <p className={styles.userStatsNameMobile}>{quizzesWon}</p>
+            <p className={styles.userStatsName}>
+              <span className={styles.userStatsNumber}>{quizzesWon}</span>
+              <span className={styles.userStatsText}>Quizzes won</span>
+            </p>
           </div>
         </div>
       </div>

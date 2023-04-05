@@ -1,5 +1,4 @@
 import { FC, ReactElement } from "react";
-import Link from "next/link";
 import { Container } from "@/components/global/container";
 import { UserCard } from "@/components/global/user-card";
 import global from "@/styles/global.module.scss";
@@ -9,7 +8,7 @@ export const HighScore: FC = (): ReactElement => {
     <Container>
       <section className={`${global.section} ${global.highScore}`}>
         <h2 className={global.subHeader}>Highest scores</h2>
-        <div className={global.cardWrapper}>
+        <div className={global.userCardWrapper}>
           <UserCard
             userAvatar="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541
 "

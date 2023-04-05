@@ -3,18 +3,34 @@
 
 .heroTitle {
   font-size: 1.5rem;
+
   color: $header-color;
 
   @include tablet {
     font-size: 2.5rem;
   }
+
+  @include desktop {
+    display: none;
+  }
+
+  &Desktop {
+    display: none;
+
+    font-size: 2.5rem;
+
+    @include desktop {
+      display: block;
+    }
+  }
 }
 
 .heroDescription {
   font-size: 0.875rem;
+  margin-top: 20px;
 
-  @include mobile-only {
-    margin-top: 20px;
+  @include tablet-only {
+    margin-top: none;
   }
 
   @include tablet {
@@ -28,9 +44,9 @@
   }
 
   &Small {
-    @include tablet {
-      display: flex;
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    @include tablet-only {
       margin-top: 40px;
 
       margin-right: 25px;
@@ -44,13 +60,15 @@
   width: 100%;
 
   margin-top: 20px;
+  justify-content: space-between;
 
-  @include mobile-only {
-    justify-content: space-between;
+  @include tablet-only {
+    flex-direction: column;
+    justify-content: unset;
   }
 
-  @include tablet {
-    flex-direction: column;
+  @include desktop {
+    margin-top: auto;
   }
 }
 
@@ -75,23 +93,24 @@
   transition: opacity $transition;
 
   @include tablet {
+    width: 100%;
+    height: 50px;
     font-size: 1rem;
   }
 
-  &:last-child {
-    @include tablet {
-      margin-top: 20px;
-    }
-  }
-
-  @include tablet {
-    width: 100%;
-    height: 50px;
+  @include desktop {
+    width: 250px;
   }
 
   &:hover,
   &:focus {
     opacity: 0.7;
+  }
+
+  &:last-child {
+    @include tablet-only {
+      margin-top: 20px;
+    }
   }
 }
 
@@ -103,5 +122,10 @@
   @include tablet {
     width: 280px;
     height: 280px;
+  }
+
+  @include desktop {
+    max-width: 420px;
+    max-height: 420px;
   }
 }

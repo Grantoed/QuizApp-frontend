@@ -13,6 +13,9 @@ export const Header: FC = (): ReactElement => {
         </h1>
         <div className={styles.heroWrapper}>
           <div className={styles.heroWrapperSmall}>
+            <h1 className={styles.heroTitleDesktop}>
+              QuizApp - a shameless attempt at copying Quizlet
+            </h1>
             <p className={styles.heroDescription}>
               QuizApp lets you take quizzes created by other users or create one
               yourself to study for exams and job interviews!

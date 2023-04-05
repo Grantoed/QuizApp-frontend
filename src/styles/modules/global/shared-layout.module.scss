@@ -1,13 +1,24 @@
 @import "../../utils/vars";
 @import "../../utils/mixins";
 
+.layoutWrapperLarge {
+  @include desktop {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .header {
-  padding-top: 20px;
   display: flex;
   justify-content: space-between;
+  padding-top: 20px;
 
   @include tablet {
     padding-top: 40px;
+  }
+
+  @include desktop {
+    display: none;
   }
 }
 

@@ -1,38 +1,39 @@
 @import "../../utils/vars";
 @import "../../utils/mixins";
 
-.backdrop {
+.sidebar {
+  display: none;
+  @include desktop {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: block;
+
+    height: 100vh;
+    width: 270px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 40px;
+
+    border-right: 1px solid $backdrop-color;
+  }
+}
+
+.logo {
+  width: 144px;
+  height: 30px;
+}
+
+.sidebarMenuWrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 
-  width: 100vw;
-  height: 100vh;
-
-  padding-left: 15px;
-  padding-right: 15px;
-
-  @include tablet {
-    justify-content: space-between;
-    max-height: 400px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 40px;
-  }
+  height: 100%;
 }
 
 .menu {
-  &List {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    @include tablet {
-      align-items: flex-start;
-    }
-  }
-
   &Icon {
     margin-right: 10px;
     width: 23px;
@@ -40,19 +41,9 @@
   }
 
   &Item {
-    display: flex;
-    align-items: center;
-
-    height: 30px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    margin-top: 30px;
-
     font-size: 1.25rem;
-
-    @include tablet {
-      padding-top: 20px;
-      padding-bottom: 20px;
+    &:not(:first-child) {
+      margin-top: 40px;
     }
   }
 
@@ -68,17 +59,7 @@
   }
 
   &UserWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    @include tablet {
-      flex-direction: row-reverse;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-top: 30px;
-    }
+    max-width: 200px;
   }
 
   &UserCard {
@@ -100,11 +81,12 @@
   }
 
   &UserName {
-    font-size: 1.25rem;
+    font-size: 0.875rem;
     overflow-wrap: anywhere;
   }
 
   &UserEmail {
+    font-size: 0.875rem;
     color: $backdrop-color;
     overflow-wrap: anywhere;
   }
@@ -115,7 +97,10 @@
   align-items: center;
   justify-content: baseline;
 
-  font-size: 1.25rem;
+  padding-left: 5px;
+  margin-top: 15px;
+
+  font-size: 0.875rem;
 
   background-color: transparent;
   color: inherit;
@@ -134,8 +119,8 @@
 }
 
 .logOutIcon {
-  width: 23px;
-  height: 28px;
+  width: 20px;
+  height: 25px;
   margin-right: 10px;
 
   color: inherit;

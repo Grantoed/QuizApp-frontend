@@ -8,8 +8,15 @@
     padding-top: 40px;
   }
 
+  @include desktop {
+    padding-top: 60px;
+  }
+
   &.hero {
     padding-top: 40px;
+    @include desktop {
+      padding-top: 90px;
+    }
   }
 
   &.highScore {
@@ -17,8 +24,20 @@
   }
 }
 
-.cardWrapper {
+.userCardWrapper {
   margin-top: 25px;
+}
+
+.quizCardWrapper {
+  margin-top: 25px;
+
+  @include desktop {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 20px;
+  }
 }
 
 .headerWrapper {
