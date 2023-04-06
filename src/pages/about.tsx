@@ -15,9 +15,9 @@ const About: FC = (): ReactElement => {
               <p className={styles.paragraph}>
                 Introducing QuizApp - a TypeScript Next.js and Node.js
                 full-stack application for creating and solving quizzes. Whether
-                you're studying for exams or job interviews, QuizApp provides an
-                intuitive and engaging platform to help you learn more
-                efficiently.
+                you&apos;re studying for exams or job interviews, QuizApp
+                provides an intuitive and engaging platform to help you learn
+                more efficiently.
               </p>
               <p className={styles.paragraph}>
                 With a sleek design by my friend&nbsp;
