@@ -56,6 +56,22 @@
     &:focus {
       color: $link-hover-color;
     }
+
+    &Active {
+      display: flex;
+      align-items: center;
+      color: $link-hover-color;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 3px;
+        height: 24px;
+        margin-left: auto;
+        background-color: $link-hover-color;
+        border-radius: 5px;
+      }
+    }
   }
 
   &UserWrapper {

@@ -1,4 +1,5 @@
 import { FC, ReactElement } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -8,30 +9,67 @@ import {
   BiInfoCircle,
   BiLogOut,
 } from "react-icons/bi";
+import { MobileMenuInterface } from "@/utils/interfaces/mobile.menu.interface";
 import styles from "@/styles/modules/global/mobile-menu.module.scss";
 
-export const MobileMenu: FC = (): ReactElement => {
+export const MobileMenu: FC<MobileMenuInterface> = ({
+  toggleMenu,
+}): ReactElement => {
+  const router = useRouter();
+
   return (
     <div className={styles.backdrop}>
       <nav className={styles.menu}>
         <ul className={styles.menuList}>
           <li className={styles.menuItem}>
-            <Link className={styles.menuLink} href={"/"}>
+            <Link
+              onClick={toggleMenu}
+              className={
+                router.pathname === "/"
+                  ? `${styles.menuLinkActive}`
+                  : `${styles.menuLink}`
+              }
+              href={"/"}
+            >
               <BiHomeAlt2 className={styles.menuIcon} /> Home
             </Link>
           </li>
           <li className={styles.menuItem}>
-            <Link className={styles.menuLink} href={"/"}>
+            <Link
+              onClick={toggleMenu}
+              className={
+                router.pathname === "/dashboard"
+                  ? `${styles.menuLinkActive}`
+                  : `${styles.menuLink}`
+              }
+              href={"/dashboard"}
+            >
               <BiLayout className={styles.menuIcon} /> Dashboard
             </Link>
           </li>
           <li className={styles.menuItem}>
-            <Link className={styles.menuLink} href={"/"}>
+            <Link
+              onClick={toggleMenu}
+              className={
+                router.pathname === "/quizzes"
+                  ? `${styles.menuLinkActive}`
+                  : `${styles.menuLink}`
+              }
+              href={"/quizzes"}
+            >
               <BiLayer className={styles.menuIcon} /> Quizzes
             </Link>
           </li>
           <li className={styles.menuItem}>
-            <Link className={styles.menuLink} href={"/"}>
+            <Link
+              onClick={toggleMenu}
+              className={
+                router.pathname === "/about"
+                  ? `${styles.menuLinkActive}`
+                  : `${styles.menuLink}`
+              }
+              href={"/about"}
+            >
               <BiInfoCircle className={styles.menuIcon} /> About
             </Link>
           </li>

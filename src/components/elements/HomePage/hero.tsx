@@ -35,7 +35,6 @@ export const Header: FC = (): ReactElement => {
             alt={"Hero image"}
             width={420}
             height={420}
-            priority
           ></Image>
         </div>
       </section>

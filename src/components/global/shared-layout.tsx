@@ -13,8 +13,12 @@ export const SharedLayout: FC<ContainerProps> = ({
 }: ContainerProps): ReactElement => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = (e: any) => {
+    if (e.currentTarget.nodeName === "BUTTON") {
+      setIsMenuOpen(!isMenuOpen);
+    } else {
+      setIsMenuOpen(false);
+    }
   };
 
   return (
@@ -51,7 +55,7 @@ export const SharedLayout: FC<ContainerProps> = ({
             )}
           </header>
         </Container>
-        {isMenuOpen && <MobileMenu />}
+        {isMenuOpen && <MobileMenu toggleMenu={toggleMenu} />}
         {children}
       </div>
     </div>

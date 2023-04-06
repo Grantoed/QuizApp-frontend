@@ -1,4 +1,5 @@
 import { FC, ReactElement } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -11,6 +12,8 @@ import {
 import styles from "@/styles/modules/global/sidebar.module.scss";
 
 export const Sidebar: FC = (): ReactElement => {
+  const router = useRouter();
+
   return (
     <aside className={styles.sidebar}>
       <Link href="/">
@@ -26,22 +29,50 @@ export const Sidebar: FC = (): ReactElement => {
         <nav className={styles.menu}>
           <ul className={styles.menuList}>
             <li className={styles.menuItem}>
-              <Link className={styles.menuLink} href={"/"}>
+              <Link
+                className={
+                  router.pathname === "/"
+                    ? `${styles.menuLinkActive}`
+                    : `${styles.menuLink}`
+                }
+                href={"/"}
+              >
                 <BiHomeAlt2 className={styles.menuIcon} /> Home
               </Link>
             </li>
             <li className={styles.menuItem}>
-              <Link className={styles.menuLink} href={"/"}>
+              <Link
+                className={
+                  router.pathname === "/dashboard"
+                    ? `${styles.menuLinkActive}`
+                    : `${styles.menuLink}`
+                }
+                href={"/dashboard"}
+              >
                 <BiLayout className={styles.menuIcon} /> Dashboard
               </Link>
             </li>
             <li className={styles.menuItem}>
-              <Link className={styles.menuLink} href={"/"}>
+              <Link
+                className={
+                  router.pathname === "/quizzes"
+                    ? `${styles.menuLinkActive}`
+                    : `${styles.menuLink}`
+                }
+                href={"/quizzes"}
+              >
                 <BiLayer className={styles.menuIcon} /> Quizzes
               </Link>
             </li>
             <li className={styles.menuItem}>
-              <Link className={styles.menuLink} href={"/"}>
+              <Link
+                className={
+                  router.pathname === "/about"
+                    ? `${styles.menuLinkActive}`
+                    : `${styles.menuLink}`
+                }
+                href={"/about"}
+              >
                 <BiInfoCircle className={styles.menuIcon} /> About
               </Link>
             </li>
