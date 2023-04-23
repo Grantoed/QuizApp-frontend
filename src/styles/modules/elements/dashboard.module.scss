@@ -1,0 +1,55 @@
+@import "../../utils/vars";
+@import "../../utils/mixins";
+
+.userStats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include mobile-only {
+    margin-top: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  @include tablet {
+    width: 50%;
+  }
+
+  &Item {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  &Icon {
+    width: 24px;
+    height: 24px;
+
+    @include desktop {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &Name {
+    margin-left: 5px;
+    @include desktop {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &Number {
+    @include desktop {
+      font-size: 1.25rem;
+    }
+  }
+
+  &Text {
+    display: none;
+    @include desktop {
+      display: block;
+    }
+  }
+}
