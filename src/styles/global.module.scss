@@ -19,7 +19,8 @@
     }
   }
 
-  &.highScore {
+  &.highScore,
+  &.dashboard {
     padding-bottom: 80px;
   }
 }
@@ -37,6 +38,16 @@
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 30px;
     grid-row-gap: 20px;
+  }
+
+  &.dashboard {
+    @include desktop {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+      grid-column-gap: 30px;
+      grid-row-gap: 20px;
+    }
   }
 }
 

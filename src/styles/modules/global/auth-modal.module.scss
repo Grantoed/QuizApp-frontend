@@ -1,0 +1,33 @@
+@import "../../utils/vars";
+@import "../../utils/mixins";
+
+.backdrop {
+  position: fixed;
+
+  background-color: $backdrop-color;
+  opacity: $backdrop-opacity;
+  filter: $backdrop-blur;
+  z-index: 999;
+
+  @include not-desktop {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  @include desktop {
+    width: 100%;
+    height: 100%;
+    margin-left: 270px;
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $alt-bg-color;
+  z-index: 1000;
+}

@@ -130,14 +130,14 @@ const Dashboard: FC = (): ReactElement => {
             </div>
           </div>
         </section>
-        <section className={global.section}>
+        <section className={`${global.section} ${global.dashboard}`}>
           <div className={global.headerWrapper}>
             <h2 className={global.subHeader}>Latest</h2>
             <Link className={global.viewMore} href={""}>
               View more
             </Link>
           </div>
-          <div className={global.quizCardWrapper}>
+          <div className={`${global.quizCardWrapper} ${global.dashboard}`}>
             <QuizCard
               title={"Prepare for your next History exam"}
               questionsNumber={31}

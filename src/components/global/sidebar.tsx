@@ -9,9 +9,12 @@ import {
   BiInfoCircle,
   BiLogOut,
 } from "react-icons/bi";
+import { SidebarInterface } from "@/utils/interfaces/sidebar.interface";
 import styles from "@/styles/modules/global/sidebar.module.scss";
 
-export const Sidebar: FC = (): ReactElement => {
+export const Sidebar: FC<SidebarInterface> = ({
+  openAuthModal,
+}): ReactElement => {
   const router = useRouter();
 
   return (
@@ -96,8 +99,15 @@ export const Sidebar: FC = (): ReactElement => {
               </p>
             </div>
           </Link>
-          <button type="button" className={styles.logOutBtn}>
+          {/* <button type="button" className={styles.logOutBtn}>
             <BiLogOut className={styles.logOutIcon} /> Log Out
+          </button> */}
+          <button
+            type="button"
+            className={styles.logOutBtn}
+            onClick={openAuthModal}
+          >
+            <BiLogOut className={styles.logOutIcon} /> Log In
           </button>
         </div>
       </div>

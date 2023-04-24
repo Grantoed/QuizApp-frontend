@@ -1,3 +1,4 @@
 export interface MobileMenuInterface {
-  toggleMenu: (e: any) => void;
+  closeMenu: (e: any) => void;
+  openAuthModal: () => void;
 }

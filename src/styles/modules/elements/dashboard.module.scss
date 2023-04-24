@@ -18,11 +18,12 @@
 }
 
 .userCardWrapper {
-  margin-top: 10px;
+  @include not-desktop {
+    margin-top: 10px;
+  }
   @include desktop {
     display: flex;
     flex-direction: column;
-    margin-top: unset;
     margin-left: 40px;
   }
 }
