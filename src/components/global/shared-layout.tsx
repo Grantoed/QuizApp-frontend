@@ -40,7 +40,12 @@ export const SharedLayout: FC<ContainerProps> = ({
   };
 
   const closeAuthModal = (e: any) => {
-    if (e.key === "Escape" || e.target.id === "backdrop") {
+    if (
+      e.key === "Escape" ||
+      e.target.id === "backdrop" ||
+      e.target.id === "auth-close" ||
+      e.target.closest("svg")
+    ) {
       setIsAuthOpen(false);
       document.body.style.overflow = "auto";
     }

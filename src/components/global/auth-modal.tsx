@@ -1,5 +1,8 @@
 import { FC, ReactElement, useEffect } from "react";
-import { SharedLayout } from "./shared-layout";
+import Link from "next/link";
+import Image from "next/image";
+import { RxCross1 } from "react-icons/rx";
+import { RegisterForm } from "./register-form";
 import { AuthModalInterface } from "@/utils/interfaces/auth-modal.interface";
 import styles from "@/styles/modules/global/auth-modal.module.scss";
 
@@ -16,7 +19,27 @@ export const AuthModal: FC<AuthModalInterface> = ({
 
   return (
     <div className={styles.backdrop} onClick={closeAuthModal} id="backdrop">
-      <div className={styles.modal}></div>
+      <div className={styles.modal}>
+        <div className={styles.modalHeader}>
+          <Image
+            className={styles.logo}
+            src="/Logo.svg"
+            alt="Logo"
+            width={144}
+            height={30}
+          />
+          <button
+            type="button"
+            id="auth-close"
+            className={styles.close}
+            onClick={closeAuthModal}
+          >
+            Close
+            <RxCross1 className={styles.iconClose} />
+          </button>
+        </div>
+        <RegisterForm />
+      </div>
     </div>
   );
 };

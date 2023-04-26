@@ -5,8 +5,7 @@
   position: fixed;
 
   background-color: $backdrop-color;
-  opacity: $backdrop-opacity;
-  filter: $backdrop-blur;
+  backdrop-filter: $backdrop-blur;
   z-index: 999;
 
   @include not-desktop {
@@ -25,9 +24,44 @@
 
 .modal {
   position: absolute;
+
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 40%;
+
+  width: 330px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+
   background-color: $alt-bg-color;
+  box-shadow: $card-shadow;
+  border-radius: $border-radius;
+
+  transform: translate(-50%, -50%);
   z-index: 1000;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 144px;
+  height: 30px;
+}
+
+.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  background-color: transparent;
+}
+
+.iconClose {
+  width: 17px;
+  height: 17px;
+  margin-left: 5px;
 }

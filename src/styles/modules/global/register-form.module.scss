@@ -1,0 +1,86 @@
+@import "../../utils/vars";
+@import "../../utils/mixins";
+
+.form {
+  padding-top: 20px;
+
+  & button {
+    width: 100%;
+  }
+}
+
+.field {
+  &:not(:first-of-type) {
+    margin-top: 10px;
+  }
+}
+
+.label {
+  font-size: 0.875rem;
+}
+
+.input {
+  width: 100%;
+  margin-top: 5px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+
+  font-size: 0.875rem;
+
+  border: $input-border;
+  border-radius: $border-radius;
+  transition: border $transition;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    border: 1px solid $main-btn-color;
+  }
+
+  &::placeholder {
+    color: $placeholder-color;
+  }
+}
+
+.error {
+  margin-top: 5px;
+  color: $error-color;
+  font-size: 0.75rem;
+}
+
+.button {
+  width: 100%;
+}
+
+.btnWrapper {
+  margin-top: 20px;
+
+  & button:not(:first-child) {
+    margin-top: 10px;
+  }
+}
+
+.googleIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.horizontalLine {
+  display: block;
+  margin-top: 20px;
+
+  width: 100%;
+  height: 1px;
+
+  background-color: $main-btn-color;
+}
+
+.text {
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  font-size: 0.875rem;
+}

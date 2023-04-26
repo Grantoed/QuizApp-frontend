@@ -21,10 +21,10 @@ export const Header: FC = (): ReactElement => {
               yourself to study for exams and job interviews!
             </p>
             <div className={styles.btnWrapper}>
-              <button className={styles.btnMain} type="button">
+              <button className={global.btnMain} type="button">
                 Take quiz
               </button>
-              <button className={styles.btnMain} type="button">
+              <button className={global.btnMain} type="button">
                 Create quiz
               </button>
             </div>

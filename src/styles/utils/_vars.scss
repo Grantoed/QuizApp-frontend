@@ -4,14 +4,17 @@ $bg-color: #fafbff;
 $alt-bg-color: #ffffff;
 $main-btn-color: #3363ad;
 $alt-btn-color: #ffffff;
-$backdrop-color: #dfdfdf;
+$backdrop-color: rgb(223, 223, 223, 0.5);
 $link-hover-color: #9747ff;
+$error-color: #8a1c1c;
+$placeholder-color: rgba(11, 72, 112, 0.5);
 
 $backdrop-opacity: 0.5;
 $backdrop-blur: blur(2px);
 
 $border-radius: 6px;
 $dashboard-stats-radius: 20px;
+$input-border: 1px solid #dfdfdf;
 $card-shadow: 2px 6px 15px 3px rgba(7, 21, 10, 0.06);
 $card-shadow-hover: 2px 6px 15px 3px rgba(7, 21, 10, 0.18);
 
