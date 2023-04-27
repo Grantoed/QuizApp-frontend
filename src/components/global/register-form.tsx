@@ -1,12 +1,11 @@
 import { FC, ReactElement, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FcGoogle } from "react-icons/fc";
 import { RegisterFormInterface } from "@/utils/interfaces/register-form.interface";
 import { RegisterValuesInterface } from "@/utils/interfaces/register-form.interface";
 import { registerSchema } from "../validations/register.validation";
-import { register } from "@/api/users";
+import { signUp } from "@/api/users";
 import styles from "@/styles/modules/global/register-form.module.scss";
 import global from "@/styles/global.module.scss";
 
@@ -15,14 +14,13 @@ export const RegisterForm: FC<RegisterFormInterface> = ({
 }): ReactElement => {
   const {
     register,
-    control,
     handleSubmit,
     formState: { errors, isSubmitSuccessful, isSubmitting, isValid },
-    getValues,
     reset,
+    setError,
   } = useForm<RegisterValuesInterface>({
     defaultValues: {
-      username: "",
+      name: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -37,9 +35,14 @@ export const RegisterForm: FC<RegisterFormInterface> = ({
     }
   }, [isSubmitSuccessful, reset]);
 
-  const onSubmit = ({ username, email, password }: RegisterValuesInterface) => {
-    console.log("Form submitted", { username, email, password });
-    register({ username, email, password });
+  const onSubmit = async (data: RegisterValuesInterface) => {
+    const r = await signUp(data);
+    if (r.status === 409) {
+      setError("email", {
+        type: "manual",
+        message: "User with this email already exists",
+      });
+    }
   };
 
   return (
@@ -50,18 +53,18 @@ export const RegisterForm: FC<RegisterFormInterface> = ({
         autoComplete="off"
       >
         <div className={styles.field}>
-          <label className={styles.label} htmlFor="username">
-            Username
+          <label className={styles.label} htmlFor="name">
+            Name
           </label>
           <input
             className={styles.input}
             type="name"
-            id="username"
-            {...register("username")}
+            id="name"
+            {...register("name")}
             placeholder="what's your name?"
           />
-          {errors.username?.message && (
-            <p className={styles.error}>{errors.username.message}</p>
+          {errors.name?.message && (
+            <p className={styles.error}>{errors.name.message}</p>
           )}
         </div>
 
@@ -132,7 +135,6 @@ export const RegisterForm: FC<RegisterFormInterface> = ({
           Log in instead
         </button>
       </form>
-      {/* <DevTool control={control} /> */}
     </div>
   );
 };

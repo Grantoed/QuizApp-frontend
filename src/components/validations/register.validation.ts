@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 export const registerSchema = yup.object().shape({
-  username: yup
+  name: yup
     .string()
     .required("Username is required")
     .min(3, "Username must be at least 3 characters"),

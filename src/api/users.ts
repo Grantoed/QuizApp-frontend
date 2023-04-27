@@ -9,25 +9,30 @@ const URL_LIST = Object.freeze({
   current: "/users",
 });
 
-export const register = async (body: RegisterValuesInterface) => {
+export const signUp = async (body: RegisterValuesInterface) => {
   try {
-    const { data } = await server.post(URL_LIST.register, body);
-    token.set(data.token);
+    const { name, email, password } = body;
+    const { data } = await server.post(URL_LIST.register, {
+      name,
+      email,
+      password,
+    });
+    token.set(data.accessToken);
 
     return data;
   } catch (e: any) {
-    throw new Error(e.message);
+    return { status: e.response.status, message: e.message };
   }
 };
 
 export const logIn = async (body: LoginValuesInterface) => {
   try {
     const { data } = await server.post(URL_LIST.logIn, body);
-    token.set(data.token);
+    token.set(data.accessToken);
 
     return data;
   } catch (e: any) {
-    throw new Error(e.message);
+    return { status: e.response.status, message: e.message };
   }
 };
 
