@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { RegisterFormInterface } from "@/utils/interfaces/register-form.interface";
 import { RegisterValuesInterface } from "@/utils/interfaces/register-form.interface";
 import { registerSchema } from "../validations/register.validation";
+import { register } from "@/api/users";
 import styles from "@/styles/modules/global/register-form.module.scss";
 import global from "@/styles/global.module.scss";
 
@@ -36,8 +37,9 @@ export const RegisterForm: FC<RegisterFormInterface> = ({
     }
   }, [isSubmitSuccessful, reset]);
 
-  const onSubmit = (data: RegisterValuesInterface) => {
-    console.log("Form submitted", data);
+  const onSubmit = ({ username, email, password }: RegisterValuesInterface) => {
+    console.log("Form submitted", { username, email, password });
+    register({ username, email, password });
   };
 
   return (
