@@ -1,14 +1,17 @@
-import { FC, ReactElement, useEffect } from "react";
+import { FC, ReactElement, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { RxCross1 } from "react-icons/rx";
 import { RegisterForm } from "./register-form";
+import { LogInForm } from "./login-form";
 import { AuthModalInterface } from "@/utils/interfaces/auth-modal.interface";
 import styles from "@/styles/modules/global/auth-modal.module.scss";
 
 export const AuthModal: FC<AuthModalInterface> = ({
   closeAuthModal,
 }): ReactElement => {
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+
   useEffect(() => {
     document.addEventListener("keydown", closeAuthModal);
 
@@ -38,7 +41,11 @@ export const AuthModal: FC<AuthModalInterface> = ({
             <RxCross1 className={styles.iconClose} />
           </button>
         </div>
-        <RegisterForm />
+        {isSignUpOpen ? (
+          <RegisterForm handleOpenSignUp={setIsSignUpOpen} />
+        ) : (
+          <LogInForm handleOpenSignUp={setIsSignUpOpen} />
+        )}
       </div>
     </div>
   );

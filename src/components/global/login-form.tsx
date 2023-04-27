@@ -3,13 +3,13 @@ import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FcGoogle } from "react-icons/fc";
-import { RegisterFormInterface } from "@/utils/interfaces/register-form.interface";
-import { RegisterValuesInterface } from "@/utils/interfaces/register-form.interface";
-import { registerSchema } from "../validations/register.validation";
+import { LoginFormInterface } from "@/utils/interfaces/login-form.interface";
+import { LoginValuesInterface } from "@/utils/interfaces/login-form.interface";
+import { loginSchema } from "../validations/login.validation";
 import styles from "@/styles/modules/global/register-form.module.scss";
 import global from "@/styles/global.module.scss";
 
-export const RegisterForm: FC<RegisterFormInterface> = ({
+export const LogInForm: FC<LoginFormInterface> = ({
   handleOpenSignUp,
 }): ReactElement => {
   const {
@@ -19,15 +19,13 @@ export const RegisterForm: FC<RegisterFormInterface> = ({
     formState: { errors, isSubmitSuccessful, isSubmitting, isValid },
     getValues,
     reset,
-  } = useForm<RegisterValuesInterface>({
+  } = useForm<LoginValuesInterface>({
     defaultValues: {
-      username: "",
       email: "",
       password: "",
-      confirmPassword: "",
     },
     mode: "onTouched",
-    resolver: yupResolver(registerSchema),
+    resolver: yupResolver(loginSchema),
   });
 
   useEffect(() => {
@@ -36,7 +34,7 @@ export const RegisterForm: FC<RegisterFormInterface> = ({
     }
   }, [isSubmitSuccessful, reset]);
 
-  const onSubmit = (data: RegisterValuesInterface) => {
+  const onSubmit = (data: LoginValuesInterface) => {
     console.log("Form submitted", data);
   };
 
@@ -48,29 +46,13 @@ export const RegisterForm: FC<RegisterFormInterface> = ({
         autoComplete="off"
       >
         <div className={styles.field}>
-          <label className={styles.label} htmlFor="username">
-            Username
-          </label>
-          <input
-            className={styles.input}
-            type="name"
-            id="username"
-            {...register("username")}
-            placeholder="what's your name?"
-          />
-          {errors.username?.message && (
-            <p className={styles.error}>{errors.username.message}</p>
-          )}
-        </div>
-
-        <div className={styles.field}>
-          <label className={styles.label} htmlFor="email">
+          <label className={styles.label} htmlFor="login-email">
             Email
           </label>
           <input
             className={styles.input}
             type="email"
-            id="email"
+            id="login-email"
             {...register("email")}
             placeholder="example@mail.com"
           />
@@ -80,34 +62,18 @@ export const RegisterForm: FC<RegisterFormInterface> = ({
         </div>
 
         <div className={styles.field}>
-          <label className={styles.label} htmlFor="password">
+          <label className={styles.label} htmlFor="login-password">
             Password
           </label>
           <input
             className={styles.input}
             autoComplete="off"
             type="password"
-            id="password"
+            id="login-password"
             {...register("password")}
           />
           {errors.password?.message && (
             <p className={styles.error}>{errors.password.message}</p>
-          )}
-        </div>
-
-        <div className={styles.field}>
-          <label className={styles.label} htmlFor="confirmPassword">
-            Confirm password
-          </label>
-          <input
-            className={styles.input}
-            autoComplete="off"
-            type="password"
-            id="confirmPassword"
-            {...register("confirmPassword")}
-          />
-          {errors.confirmPassword?.message && (
-            <p className={styles.error}>{errors.confirmPassword.message}</p>
           )}
         </div>
         <div className={styles.btnWrapper}>
@@ -115,19 +81,19 @@ export const RegisterForm: FC<RegisterFormInterface> = ({
             className={`${global.btnMain}`}
             disabled={isSubmitting || !isValid}
           >
-            Sign up
+            Log in
           </button>
           <button className={`${global.btnAlt}`}>
-            <FcGoogle className={styles.googleIcon} /> Sign up with Google
+            <FcGoogle className={styles.googleIcon} /> Log in with Google
           </button>
         </div>
         <span className={styles.horizontalLine}></span>
-        <p className={styles.text}>Already have an account?</p>
+        <p className={styles.text}>Not registered yet?</p>
         <button
           className={`${global.btnMain}`}
-          onClick={() => handleOpenSignUp(false)}
+          onClick={() => handleOpenSignUp(true)}
         >
-          Log in instead
+          Sign up here
         </button>
       </form>
       {/* <DevTool control={control} /> */}

@@ -17,6 +17,10 @@
 
 .label {
   font-size: 0.875rem;
+
+  @include tablet {
+    font-size: 1rem;
+  }
 }
 
 .input {
@@ -34,6 +38,10 @@
   transition: border $transition;
   outline: none;
 
+  @include tablet {
+    font-size: 1rem;
+  }
+
   &:hover,
   &:focus {
     border: 1px solid $main-btn-color;
@@ -46,8 +54,13 @@
 
 .error {
   margin-top: 5px;
+  padding-left: 5px;
   color: $error-color;
   font-size: 0.75rem;
+
+  @include tablet {
+    font-size: 0.875rem;
+  }
 }
 
 .button {
@@ -83,4 +96,8 @@
   margin-bottom: 10px;
 
   font-size: 0.875rem;
+
+  @include tablet {
+    font-size: 1rem;
+  }
 }

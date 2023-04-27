@@ -1,12 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
 
-export interface RegisterFormInterface {
+export interface LoginFormInterface {
   handleOpenSignUp: Dispatch<SetStateAction<boolean>>;
 }
 
-export interface RegisterValuesInterface {
-  username: string;
+export interface LoginValuesInterface {
   email: string;
   password: string;
-  confirmPassword: string;
 }
