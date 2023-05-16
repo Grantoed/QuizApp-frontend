@@ -1,11 +1,11 @@
 import { FC, ReactElement, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FcGoogle } from "react-icons/fc";
 import { LoginFormInterface } from "@/utils/interfaces/login-form.interface";
 import { LoginValuesInterface } from "@/utils/interfaces/login-form.interface";
 import { loginSchema } from "../validations/login.validation";
-import { logIn } from "@/api/users";
+import { logIn, oauth } from "@/api/users";
 import styles from "@/styles/modules/global/register-form.module.scss";
 import global from "@/styles/global.module.scss";
 
@@ -33,7 +33,7 @@ export const LogInForm: FC<LoginFormInterface> = ({
     }
   }, [isSubmitSuccessful, reset]);
 
-  const onSubmit = async (data: LoginValuesInterface) => {
+  const onSubmit: SubmitHandler<LoginValuesInterface> = async (data) => {
     const r = await logIn(data);
     if (r.status === 401) {
       setError("root", {
@@ -91,7 +91,7 @@ export const LogInForm: FC<LoginFormInterface> = ({
           >
             Log in
           </button>
-          <button className={`${global.btnAlt}`}>
+          <button type="button" className={`${global.btnAlt}`} onClick={oauth}>
             <FcGoogle className={styles.googleIcon} /> Log in with Google
           </button>
         </div>

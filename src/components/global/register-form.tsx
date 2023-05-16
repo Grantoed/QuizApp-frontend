@@ -5,7 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { RegisterFormInterface } from "@/utils/interfaces/register-form.interface";
 import { RegisterValuesInterface } from "@/utils/interfaces/register-form.interface";
 import { registerSchema } from "../validations/register.validation";
-import { signUp } from "@/api/users";
+import { signUp, oauth } from "@/api/users";
 import styles from "@/styles/modules/global/register-form.module.scss";
 import global from "@/styles/global.module.scss";
 
@@ -122,7 +122,7 @@ export const RegisterForm: FC<RegisterFormInterface> = ({
           >
             Sign up
           </button>
-          <button className={`${global.btnAlt}`}>
+          <button type="button" className={`${global.btnAlt}`} onClick={oauth}>
             <FcGoogle className={styles.googleIcon} /> Sign up with Google
           </button>
         </div>

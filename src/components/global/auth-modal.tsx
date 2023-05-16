@@ -26,7 +26,7 @@ export const AuthModal: FC<AuthModalInterface> = ({
         <div className={styles.modalHeader}>
           <Image
             className={styles.logo}
-            src="/Logo.svg"
+            src="/logo.png"
             alt="Logo"
             width={144}
             height={30}

@@ -60,7 +60,7 @@ export const SharedLayout: FC<ContainerProps> = ({
             <Link href="/">
               <Image
                 className={styles.logo}
-                src="/Logo.svg"
+                src="/logo.png"
                 alt="Logo"
                 width={144}
                 height={30}
