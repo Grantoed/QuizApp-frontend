@@ -37,19 +37,6 @@ export const UserCard: FC<UserCardInterface> = ({
               <span className={styles.userStatsText}>Quizzes solved</span>
             </p>
           </div>
-          <div className={styles.userStatsItem}>
-            <Image
-              className={styles.userStatsIcon}
-              src={"/won.svg"}
-              alt={"Stats icon"}
-              width={40}
-              height={40}
-            ></Image>
-            <p className={styles.userStatsName}>
-              <span className={styles.userStatsNumber}>{quizzesWon}</span>
-              <span className={styles.userStatsText}>Quizzes won</span>
-            </p>
-          </div>
         </div>
       </div>
     </Link>

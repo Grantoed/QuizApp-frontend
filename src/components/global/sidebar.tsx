@@ -10,12 +10,15 @@ import {
   BiLogOut,
 } from "react-icons/bi";
 import { SidebarInterface } from "@/utils/interfaces/sidebar.interface";
+import { useGlobalContext } from "@/contexts";
 import styles from "@/styles/modules/global/sidebar.module.scss";
 
 export const Sidebar: FC<SidebarInterface> = ({
   openAuthModal,
+  handleLogOut,
 }): ReactElement => {
   const router = useRouter();
+  const { user, loggedIn } = useGlobalContext();
 
   return (
     <aside className={styles.sidebar}>
@@ -82,33 +85,38 @@ export const Sidebar: FC<SidebarInterface> = ({
           </ul>
         </nav>
         <div className={styles.menuUserWrapper}>
-          <Link href="/" className={styles.menuUserCard}>
-            <Image
-              className={styles.menuUserAvatar}
-              src={
-                "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
-              }
-              alt="User avatar"
-              width={40}
-              height={40}
-            ></Image>
-            <div className={styles.menuUserInfo}>
-              <p className={styles.menuUserName}>Kathelyn Brokeheart</p>
-              <p className={styles.menuUserEmail}>
-                kathelyn.brokeheart@protonmail.com
-              </p>
-            </div>
-          </Link>
-          {/* <button type="button" className={styles.logOutBtn}>
-            <BiLogOut className={styles.logOutIcon} /> Log Out
-          </button> */}
-          <button
-            type="button"
-            className={styles.logOutBtn}
-            onClick={openAuthModal}
-          >
-            <BiLogOut className={styles.logOutIcon} /> Log In
-          </button>
+          {loggedIn ? (
+            <>
+              <Link href="/" className={styles.menuUserCard}>
+                <Image
+                  className={styles.menuUserAvatar}
+                  src={user.avatarURL}
+                  alt="User avatar"
+                  width={40}
+                  height={40}
+                ></Image>
+                <div className={styles.menuUserInfo}>
+                  <p className={styles.menuUserName}>{user.name}</p>
+                  <p className={styles.menuUserEmail}>{user.email}</p>
+                </div>
+              </Link>
+              <button
+                type="button"
+                className={styles.logOutBtn}
+                onClick={handleLogOut}
+              >
+                <BiLogOut className={styles.logOutIcon} /> Log Out
+              </button>
+            </>
+          ) : (
+            <button
+              type="button"
+              className={styles.logOutBtn}
+              onClick={openAuthModal}
+            >
+              <BiLogOut className={styles.logOutIcon} /> Log In
+            </button>
+          )}
         </div>
       </div>
     </aside>

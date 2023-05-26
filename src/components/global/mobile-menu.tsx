@@ -8,15 +8,20 @@ import {
   BiLayer,
   BiInfoCircle,
   BiLogOut,
+  BiLogIn,
 } from "react-icons/bi";
+import { useGlobalContext } from "@/contexts";
 import { MobileMenuInterface } from "@/utils/interfaces/mobile.menu.interface";
 import styles from "@/styles/modules/global/mobile-menu.module.scss";
 
 export const MobileMenu: FC<MobileMenuInterface> = ({
   closeMenu,
   openAuthModal,
+  handleLogOut,
 }): ReactElement => {
   const router = useRouter();
+  const { user, loggedIn } = useGlobalContext();
+
   useEffect(() => {
     document.addEventListener("keydown", closeMenu);
 
@@ -80,34 +85,41 @@ export const MobileMenu: FC<MobileMenuInterface> = ({
         </ul>
       </nav>
       <div className={styles.menuUserWrapper}>
-        <Link href="/" className={styles.menuUserCard}>
-          <Image
-            className={styles.menuUserAvatar}
-            src={
-              "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
-            }
-            alt="User avatar"
-            width={40}
-            height={40}
-          ></Image>
-          <div className={styles.menuUserInfo}>
-            <p className={styles.menuUserName}>Kathelyn Brokeheart</p>
-            <p className={styles.menuUserEmail}>
-              kathelyn.brokeheart@protonmail.com
-            </p>
-          </div>
-        </Link>
-        {/* <button type="button" id='log-out' className={styles.logOutBtn}>
-          <BiLogOut className={styles.logOutIcon} /> Log Out
-        </button> */}
-        <button
-          type="button"
-          id="log-in"
-          className={styles.logOutBtn}
-          onClick={openAuthModal}
-        >
-          <BiLogOut className={styles.logOutIcon} /> Log In
-        </button>
+        {loggedIn ? (
+          <>
+            <Link href="/" className={styles.menuUserCard}>
+              <Image
+                className={styles.menuUserAvatar}
+                src={user.avatarURL}
+                alt="User avatar"
+                width={40}
+                height={40}
+              ></Image>
+              <div className={styles.menuUserInfo}>
+                <p className={styles.menuUserName}>{user.name}</p>
+                <p className={styles.menuUserEmail}>{user.email}</p>
+              </div>
+            </Link>
+            <button
+              type="button"
+              id="log-out"
+              className={styles.logOutBtn}
+              onClick={handleLogOut}
+            >
+              <BiLogOut className={styles.logOutIcon} />
+              Log Out
+            </button>
+          </>
+        ) : (
+          <button
+            type="button"
+            id="log-in"
+            className={styles.logOutBtn}
+            onClick={openAuthModal}
+          >
+            <BiLogIn className={styles.logOutIcon} /> Log In
+          </button>
+        )}
       </div>
     </div>
   );

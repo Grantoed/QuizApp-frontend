@@ -1,32 +1,30 @@
-"use client";
-
+import { useEffect } from "react";
 import Head from "next/head";
-import { refresh, current } from "@/api/users";
+import { current } from "@/api/users";
 import { SharedLayout } from "@/components/global/shared-layout";
 import { Header } from "@/components/elements/HomePage/hero";
 import { Featured } from "@/components/elements/HomePage/featured";
 import { HighScore } from "@/components/elements/HomePage/high-score";
-import { useEffect } from "react";
-
-// export async function getServerSideProps() {
-//   const user = await current();
-//   console.log(user);
-
-//   return {
-//     props: {
-//       user,
-//     },
-//   };
-// }
+import { useGlobalContext } from "@/contexts";
 
 export default function Home() {
+  const { loggedIn, setUser, setLoggedIn, setLoading } = useGlobalContext();
+
   useEffect(() => {
     const getUser = async () => {
+      setLoading(true);
+
       const data = await current();
-      console.log(data);
+      if (!data) {
+        return;
+      }
+
+      setUser(data);
+      setLoggedIn(true);
     };
 
     getUser();
+    setLoading(false);
   }, []);
 
   return (

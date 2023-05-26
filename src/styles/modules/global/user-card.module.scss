@@ -64,21 +64,32 @@
     margin-top: 12px;
     padding-left: 5px;
     padding-right: 5px;
-  }
-
-  @include tablet {
-    width: 50%;
+    justify-content: flex-end;
   }
 
   &Item {
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    width: 60px;
+
+    @include tablet {
+      width: 80px;
+    }
+
+    @include desktop {
+      width: unset;
+    }
   }
 
   &Icon {
     width: 24px;
     height: 24px;
+
+    @include tablet {
+      width: 36px;
+      height: 36px;
+    }
 
     @include desktop {
       width: 40px;
@@ -88,6 +99,11 @@
 
   &Name {
     margin-left: 5px;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
+
     @include desktop {
       display: flex;
       flex-direction: column;

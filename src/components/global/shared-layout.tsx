@@ -7,13 +7,21 @@ import { Container } from "./container";
 import { MobileMenu } from "./mobile-menu";
 import { AuthModal } from "./auth-modal";
 import { ContainerProps } from "@/utils/interfaces/container.interface";
+import { logOut } from "@/api/users";
 import styles from "@/styles/modules/global/shared-layout.module.scss";
+import { useGlobalContext } from "@/contexts";
 
 export const SharedLayout: FC<ContainerProps> = ({
   children,
 }: ContainerProps): ReactElement => {
+  const { setLoggedIn } = useGlobalContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+
+  const handleLogOut = async () => {
+    await logOut();
+    setLoggedIn(false);
+  };
 
   const openMenu = () => {
     setIsMenuOpen(true);
@@ -42,7 +50,6 @@ export const SharedLayout: FC<ContainerProps> = ({
   const closeAuthModal = (e: any) => {
     if (
       e.key === "Escape" ||
-      // e.target.id === "backdrop" ||
       e.target.id === "auth-close" ||
       e.target.closest("svg")
     ) {
@@ -53,7 +60,7 @@ export const SharedLayout: FC<ContainerProps> = ({
 
   return (
     <div className={styles.layoutWrapperLarge}>
-      <Sidebar openAuthModal={openAuthModal} />
+      <Sidebar openAuthModal={openAuthModal} handleLogOut={handleLogOut} />
       <div className={styles.layoutWrapper}>
         <Container>
           <header className={styles.header}>
@@ -88,7 +95,11 @@ export const SharedLayout: FC<ContainerProps> = ({
           </header>
         </Container>
         {isMenuOpen && (
-          <MobileMenu closeMenu={closeMenu} openAuthModal={openAuthModal} />
+          <MobileMenu
+            closeMenu={closeMenu}
+            openAuthModal={openAuthModal}
+            handleLogOut={handleLogOut}
+          />
         )}
         {children}
       </div>

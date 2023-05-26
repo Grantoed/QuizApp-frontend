@@ -20,6 +20,7 @@ export const signUp = async (body: RegisterValuesInterface) => {
       password,
     });
     token.set(data.accessToken);
+    localStorage.setItem("user", JSON.stringify(data));
     localStorage.setItem("token", data.accessToken);
     window.location.href = "http://localhost:3000/";
     return data;
@@ -33,6 +34,7 @@ export const logIn = async (body: LoginValuesInterface) => {
     const { email, password } = body;
     const { data } = await server.post(URL_LIST.logIn, { email, password });
     token.set(data.accessToken);
+    localStorage.setItem("user", JSON.stringify(data));
     localStorage.setItem("token", data.accessToken);
     window.location.href = "http://localhost:3000/";
     return data;
@@ -43,8 +45,11 @@ export const logIn = async (body: LoginValuesInterface) => {
 
 export const logOut = async () => {
   try {
-    await server.post(URL_LIST.logOut);
+    await server.post(URL_LIST.logOut, null, { withCredentials: true });
     token.unset();
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    window.location.href = "http://localhost:3000/";
   } catch (e: any) {
     throw new Error(e.message);
   }
@@ -53,13 +58,19 @@ export const logOut = async () => {
 export const current = async () => {
   try {
     const bearer = localStorage.getItem("token");
+    const user = localStorage.getItem("user");
     if (bearer) {
       token.set(bearer);
     }
-    const { data } = await server.get(URL_LIST.current, {
-      withCredentials: true,
-    });
-    return data;
+    if (user) {
+      return JSON.parse(user);
+    } else {
+      const { data } = await server.get(URL_LIST.current, {
+        withCredentials: true,
+      });
+
+      return data;
+    }
   } catch (e: any) {
     throw new Error(e.message);
   }

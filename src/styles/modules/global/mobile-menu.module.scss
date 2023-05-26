@@ -84,8 +84,6 @@
     justify-content: center;
 
     @include tablet {
-      flex-direction: row-reverse;
-      align-items: flex-end;
       justify-content: space-between;
       margin-top: 30px;
     }
@@ -123,7 +121,7 @@
 .logOutBtn {
   display: flex;
   align-items: center;
-  justify-content: baseline;
+  margin-top: 30px;
 
   font-size: 1.25rem;
 
@@ -139,7 +137,6 @@
 
   @include mobile-only {
     height: 30px;
-    margin-top: 30px;
   }
 }
 

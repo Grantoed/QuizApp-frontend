@@ -12,6 +12,7 @@
 }
 
 .sectionWrapper {
+  position: relative;
   @include desktop {
     display: flex;
   }
@@ -47,7 +48,7 @@
 .userStats {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 40px;
 
   @include mobile-only {
@@ -56,9 +57,9 @@
 
   &Item {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-around;
-    width: 40%;
+    width: 80%;
 
     padding: 20px 15px;
 
@@ -69,6 +70,11 @@
   &Icon {
     width: 24px;
     height: 24px;
+
+    @include tablet {
+      width: 36px;
+      height: 36px;
+    }
 
     @include desktop {
       width: 40px;
@@ -82,21 +88,26 @@
     align-items: center;
     margin-left: 5px;
 
-    @include mobile-only {
-      display: block;
+    @include tablet {
+      font-size: 1.5rem;
     }
   }
 
   &Number {
-    font-size: 1.25rem;
-  }
-
-  &Text {
-    display: block;
-    @include mobile-only {
-      display: none;
+    @include tablet {
+      font-size: 1.5rem;
     }
   }
+}
+
+.userSettingsButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  color: inherit;
+  background: transparent;
 }
 
 .btnWrapper {
